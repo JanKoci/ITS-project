@@ -1,4 +1,5 @@
 Feature: Adding new customers
+
   Scenario: the Add New button
     Given a web browser displays the "Customer List" panel
     When the user clicks the Add New button

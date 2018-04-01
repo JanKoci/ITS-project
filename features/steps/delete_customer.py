@@ -5,18 +5,18 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.keys import Keys
 
-@given('a browser displays the "{panel_title}" panel')
-def step_impl(context, panel_title):
-    panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
-    if (panel != panel_title):
-        if (panel_title == "Add Customer"):
-            context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/div/a').click()
-            panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
-        else:
-            context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/ul/li[2]/a').click()
-            panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
-
-    assert panel == panel_title, "Expected = {0}, Real = {1}".format(panel_title, panel)
+# @given('a browser displays the "{panel_title}" panel')
+# def step_impl(context, panel_title):
+#     panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
+#     if (panel != panel_title):
+#         if (panel_title == "Add Customer"):
+#             context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/div/a').click()
+#             panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
+#         else:
+#             context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/ul/li[2]/a').click()
+#             panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
+#
+#     assert panel == panel_title, "Expected = {0}, Real = {1}".format(panel_title, panel)
 
 @given('it displays customer "{name}" with the mail "{email}"')
 def step_impl(context, name, email):
