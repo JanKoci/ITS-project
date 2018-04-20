@@ -6,17 +6,21 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
 
+@given('a browser displays the "{panel_title}" panel')
 @given('a web browser displays the "{panel_title}" panel')
 def step_impl(context, panel_title):
     panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
     if (panel != panel_title):
+        context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/ul/li[2]/a').click()
         if (panel_title == "Add Customer"):
             context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/div/a').click()
-            panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
-        else:
-            context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/ul/li[2]/a').click()
-            panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
-
+        elif (panel_title == "Edit Customer"):
+            customers_list = context.browser.find_element_by_xpath('//*[@id="form-customer"]/div/table/tbody').find_elements_by_tag_name('tr')
+            assert len(customers_list) >= 1 and customers_list[0].text != "No results!", (
+                                                "Customer List is empty")
+            edit_button = customers_list[0].find_elements_by_tag_name('a')[-1]
+            edit_button.click()
+        panel = context.browser.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[1]').text
     assert panel == panel_title, "Expected = {0}, Real = {1}".format(panel_title, panel)
 
 @when('the user clicks the Add New button')
@@ -72,16 +76,22 @@ def step_impl(context):
 def step_impl(context, param):
     for row in context.table:
         if (param != "first name"):
+            context.browser.find_element_by_xpath('//*[@id="input-lastname"]').clear()
             context.browser.find_element_by_xpath('//*[@id="input-lastname"]').send_keys(row['first_name'])
         if (param != "last name"):
+            context.browser.find_element_by_xpath('//*[@id="input-lastname"]').clear()
             context.browser.find_element_by_xpath('//*[@id="input-lastname"]').send_keys(row['last_name'])
         if (param != "email"):
+            context.browser.find_element_by_xpath('//*[@id="input-email"]').clear()
             context.browser.find_element_by_xpath('//*[@id="input-email"]').send_keys(row['email'])
         if (param != "telephone"):
+            context.browser.find_element_by_xpath('//*[@id="input-telephone"]').clear()
             context.browser.find_element_by_xpath('//*[@id="input-telephone"]').send_keys(row['telephone'])
         if (param != "password"):
+            context.browser.find_element_by_xpath('//*[@id="input-password"]').clear()
             context.browser.find_element_by_xpath('//*[@id="input-password"]').send_keys(row['password'])
         if (param != "confirm"):
+            context.browser.find_element_by_xpath('//*[@id="input-confirm"]').clear()
             context.browser.find_element_by_xpath('//*[@id="input-confirm"]').send_keys(row['confirm'])
 
 @then('a warning message is displayed')
