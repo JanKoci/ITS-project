@@ -17,11 +17,11 @@ def step_impl(context, num):
 def step_impl(context, key, value):
     pass
 
-###### OPRAVIT VE FEATURE ????????????????
-@when('the user filters the search using the Date Added "{date}"')
-def step_impl(context, date):
-    pass
-
-@when('the user filters the search using the IP "{ip}"')
-def step_impl(context, ip):
-    pass
+###### OPRAVENO VE FEATURE !!!!!!!
+# @when('the user filters the search using the Date Added "{date}"')
+# def step_impl(context, date):
+#     pass
+#
+# @when('the user filters the search using the IP "{ip}"')
+# def step_impl(context, ip):
+#     pass

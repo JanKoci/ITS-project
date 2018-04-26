@@ -27,15 +27,15 @@ def step_impl(context, name, email):
 def step_impl(context, name, email):
     context.customer_selector.click()
 
-@when('the user clicks the Delete button')
-def step_impl(context):
-    context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/div/button').click()
-    try:
-        WebDriverWait(context.browser, 3).until(EC.alert_is_present())
-        alert = context.browser.switch_to_alert()
-        alert.accept()
-    except TimeoutException:
-        raise TimeoutException('Alert for delete confirmation not displayed in given time')
+# @when('the user clicks the Delete button')
+# def step_impl(context):
+#     context.browser.find_element_by_xpath('//*[@id="content"]/div[1]/div/div/button').click()
+#     try:
+#         WebDriverWait(context.browser, 3).until(EC.alert_is_present())
+#         alert = context.browser.switch_to_alert()
+#         alert.accept()
+#     except TimeoutException:
+#         raise TimeoutException('Alert for delete confirmation not displayed in given time')
 
 @then('the customer "{name}" with the mail "{email}" is no longer displayed')
 def step_impl(context, name, email):
@@ -53,9 +53,9 @@ def step_impl(context, name, email):
 
 ###############################################################################
 
-@when('the user clicks the Select all button')
-def step_impl(context):
-    context.browser.find_element_by_xpath('//*[@id="form-customer"]/div/table/thead/tr/td[1]/input').click()
+# @when('the user clicks the Select all button')
+# def step_impl(context):
+#     context.browser.find_element_by_xpath('//*[@id="form-customer"]/div/table/thead/tr/td[1]/input').click()
 
 @then('the Customer List is empty')
 def step_impl(context):

@@ -1,0 +1,27 @@
+REPORT
+
+Zmeny ve features:
+ 1) v souboru search.feature = zmeny z duvodu sjednoceni implementace
+
+(old)   - When a browser displays the "{var}" panel
+(new)   + When a web browser displays the "{var}" panel
+
+(old)   - When the user filters the search using the Date Added "{var}"
+(new)   + When the user filters the search using "{var}" "{var}"
+
+        - When the user filters the search using the IP "{var}"
+        + When the user filters the search using "{var}" "{var}"
+
+ 2) Prejmenovani souboru tak, aby byly vykonavany spravne v abecednim poradi
+        - add.feature
+        + 1add.feature
+
+        - edit.feature
+        + 2edit.feature
+
+        - search.feature
+        + 3search.feature
+
+        - delete.feature
+        + 4delete.feature
+

@@ -1,9 +1,17 @@
+####################################################
+# edit.py
+# Projekt ITS - Behavior-driven development
+# Author: Jan Koci
+# Date: 31.3.2018
+# Brief: implementation of test steps
+#         defined in file 2edit.feature
+####################################################
 from behave import *
 
 # sjednotit s ostatnimi ???
-@when('the user clicks the Edit button')
-def step_impl(context):
-    context.edit_button.click()
+# @when('the user clicks the Edit button')
+# def step_impl(context):
+#     context.edit_button.click()
 
 @then('the browser displays the "{panel_title}" panel')
 def step_impl(context, panel_title):
