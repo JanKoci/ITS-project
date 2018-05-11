@@ -3,7 +3,7 @@ Feature: Editing customers
   Scenario: the edit button
     Given a web browser displays the "Customer List" panel
     And it displays customer "David Gahan" with the mail "depeche@gmail.com"
-    When the user clicks the Edit button
+    When the user clicks the "Edit" button
     Then the browser displays the "Edit Customer" panel
 
   Scenario: editing general information
